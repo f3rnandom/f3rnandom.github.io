@@ -1,6 +1,7 @@
 ---
 layout: post
-#author: Abhinav Saxena
+title: "bspwm post"
+author: Fernando Mendoza
 ---
 
 ## Configuracion de BSPWM en Debian GNU/Linux

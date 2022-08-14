@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cuanto Gasto"
+title: "Quanto Gasto"
 ---
 
 # QuantoGasto

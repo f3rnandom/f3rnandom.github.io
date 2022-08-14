@@ -1,6 +1,8 @@
 ---
 layout: post
+title: "Adivina el número"
 ---
+
 
 [Adivina el Numero][Github-f3rnandom] es la creación de un simple juego escrito en javaScript
 en el cual debemos elgir los números secretos generados de forma aleatoria.
