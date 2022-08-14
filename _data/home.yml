@@ -14,7 +14,7 @@ project_entries:
     desc: Aplicacion Android para conocimiento de gastos.
 
   - title: Project 2
-    url: numer-magico
+    url: webr-project
     desc: Pagina Web responsiva.
 
   # - title: Project 3
