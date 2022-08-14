@@ -11,10 +11,10 @@ navbar_entries:
 project_entries:
   - title: Project 1
     url: overview-post
-    desc: This is an example project, configured in _data/home.yml
+    desc: Configura tu entorno GNU/Linux con el gestor de ventnas bspwm.
 
   - title: Project 2
-    url: Soopr
+    url: number-magico
     desc: Projects are shown in card layout
 
   # - title: Project 3
