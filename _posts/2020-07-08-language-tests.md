@@ -6,7 +6,7 @@ title: "Language Tests"
 # WebResponsive
 Diseño de una página web responsiva y una conexión a la base de datos, demoninada [DawsKod](https://github.com/F3rnandom/WebResponsive) podemos ver el codigo en el repositorio.
 
-### Tenemos un diseño `responsivo`, para una perfecta integracion con cualquier dimensión de pantalla}
+### Tenemos un diseño `responsivo`, para una perfecta integracion con cualquier dimensión de pantalla
 
 ![Responsive](https://user-images.githubusercontent.com/43678195/184551758-b004cce5-f536-4f34-9801-4e904189dc37.png)
 
