@@ -16,7 +16,8 @@ El presente archivo explica los pasos que podemos realizar para poder tener una 
 - Es muy estable y nunca lo he visto fallar.
 - Muy versátil, en principio capaz de adaptarse a las manías de una amplia variedad de usuarios.
 
- ### Apps Necesarias
+#### Aplicaciones Necesarias
+Se puede instalar de esta forma con permisos de super usuario `root` o compilado como se muestra mas abajo.
 
 - apt install bspwm	//gestor de ventanas
 - apt install compton	//transparencias descontinuado
