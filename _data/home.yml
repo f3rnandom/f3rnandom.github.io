@@ -11,11 +11,11 @@ navbar_entries:
 project_entries:
   - title: Project 1
     url: overview-post
-    desc: Configura tu entorno GNU/Linux con el gestor de ventnas bspwm.
+    desc: Aplicacion Android para conocimiento de gastos.
 
   - title: Project 2
     url: magico-post
-    desc: Sencillo juego adivina el numero en web.
+    desc: Pagina Web responsiva.
 
   # - title: Project 3
   #   url: overview-post
