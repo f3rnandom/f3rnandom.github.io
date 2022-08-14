@@ -14,8 +14,8 @@ project_entries:
     desc: Configura tu entorno GNU/Linux con el gestor de ventnas bspwm.
 
   - title: Project 2
-    url: number-magico
-    desc: Projects are shown in card layout
+    url: magico-post
+    desc: Sencillo juego adivina el numero en web.
 
   # - title: Project 3
   #   url: overview-post
