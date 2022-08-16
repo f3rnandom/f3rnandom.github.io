@@ -69,7 +69,8 @@ $ chmod u+x ~/.config/bspwm/bspwmrc
 ```
 Para iniciar bspwm en el inicio de sesión añada `exec bspwm` al final de su ~/.xinitrc o ~/.xprofile y bspwmrc lanza sxhkd por ti.
  > nano /home/user_name/.xinitrc
----
+
+
 ### Configurar Archivo de bspwmrc
 ---
 > nano /home/user_name/.config/bspwm/bspwmrc
