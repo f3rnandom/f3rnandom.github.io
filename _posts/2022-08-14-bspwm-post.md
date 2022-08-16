@@ -4,83 +4,82 @@ title: "bspwm post"
 author: Fernando Mendoza
 ---
 
-## Configuracion de BSPWM en Debian GNU/Linux
+# Configuracion de BSPWM en Debian GNU/Linux
 
 Bspwm es un poderoso administrador de ventanas minimalista para Linux. Es altamente configurable y propone un enfoque innovador para la gestión de ventanas. Bspwm está escrito en C y se puede configurar en cualquier idioma. 
 
 El presente archivo explica los pasos que podemos realizar para poder tener una configuracón de bspwm de manera correcta y exitosa.
 
-## Ventajas
+### Ventajas
 
 - Consumo mínimo de recursos del sistema.
 - La configuración del gestor puede alterarse sobre la marcha, ejecutando comandos con bspc.
 - Es muy estable y nunca lo he visto fallar.
 - Muy versátil, en principio capaz de adaptarse a las manías de una amplia variedad de usuarios.
 
-#### Aplicaciones Necesarias
-Se puede instalar de esta forma con permisos de super usuario `root` o compilado como se muestra mas abajo.
+### Aplicaciones Necesarias
+---
+Podemos realizar la instalacion pormedio del gestor de paquetes en caso de base `Debian` con apt con el cual necesitaremos permisos de super usuario `root` o realizando la compilación donde deberesmos seguir la documentación oficial de cada herramienta...
 
 - apt install bspwm	//gestor de ventanas
-- apt install compton	//transparencias descontinuado
-- apt install feh		//transparencias
-- apt install rofi		//Ejecutar aplicaciones
+- apt install sxhkd	//gestor de shortcuts aunque puede venir con bspwm integrado
 - apt install polybar	//barra de estado   ----> Compilacion mas abajo
+- apt install feh		//transparencias
 - apt install picom		//transparencias ---> compilacion mas abajo
+- apt install rofi		//Ejecutar aplicaciones
 - apt install slim slimlock	//bloquear pantalla
+- apt install compton	//transparencias descontinuado
 
-### Instalación de BSPWM 
+## Instalación de BSPWM 
 ---
+Para realizar la instalación compilandolo podemos seguir la guía en la wiki de [bspwm](https://github.com/baskerville/bspwm/wiki), esta guia esta centrada en Debian y derivadas.
+
 `Dependencias`
 
-Arch Linux: 
-> $ sudo pacman -S libxcb xcb-util xcb-util-wm xcb-util-keysyms
+Ubuntu/Debian: 
+> $ sudo apt-get install libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev
 
-Ubuntu/Debian: 
->$ sudo apt-get install libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev
-
-Debian: 
->apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
-
-### Compilación y Instalación de BSPWM y SXHKD
+#### Compilación y Instalación de BSPWM y SXHKD
 ---
->   $ git clone https://github.com/baskerville/bspwm.git
->	$ git clone https://github.com/baskerville/sxhkd.git
->	$ cd bspwm && make && sudo make install
->	$ cd ../sxhkd && make && sudo make install
+```bash
+$ git clone https://github.com/baskerville/bspwm.git
+$ git clone https://github.com/baskerville/sxhkd.git
+$ cd bspwm && make && sudo make install
+$ cd ../sxhkd && make && sudo make install
+```
 
-### Desinstalar BSPWM
+#### Desinstalar BSPWM
+---
+```bash
+$ cd bspwm && sudo make uninstall
+$ cd ../sxhkd && sudo make uninstall
+```
 
->   $ cd bspwm && sudo make uninstall
->	$ cd ../sxhkd && sudo make uninstall
+#### Correr BSPWM
+---
+Crear las carpetas en `bspcm` y `sxhkd` en .config, y copiar los archivos de ejemplo para establecer una configuración por defecto.
 
-### Correr BSPWM
-Copiar los archivos de ejemplo en el directorio `~/.config/bspwm/bspwmrc` Y `~/.config/sxhkd/sxhkdrc`
+Copiar los archivos de ejemplo en el directorio `~/.config/bspwm/bspwmrc` y en `~/.config/sxhkd/sxhkdrc` correspondientemente.
 
-Crear las carpetas en `bspcm` y `sxhkd` en .config
+```bash
 $ mkdir -p ~/.config/{bspwm,sxhkd}
-
-Copiar los archivos de configuracion en las carpetas creadas anteriormente.
 $ cp /usr/local/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/
 $ cp /usr/local/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
 $ chmod u+x ~/.config/bspwm/bspwmrc
-
-Creamos el archivo .xinitrc o xprofile para que corra de al encender el equipo y agregar la line de abajo.
-[nano /home/usuario/.xinitrc]
-
-```bash
-exec bspwm 
 ```
-
+Para iniciar bspwm en el inicio de sesión añada `exec bspwm` al final de su ~/.xinitrc o ~/.xprofile y bspwmrc lanza sxhkd por ti.
+ > nano /home/user_name/.xinitrc
+---
 ### Configurar Archivo de bspwmrc
-
-[nano /home/usuario/.config/bspwm/bspwmrc]
+---
+> nano /home/user_name/.config/bspwm/bspwmrc
 
 Agregamos al inicio del archivo
----
+
 ```bash
 sxhkd &
-compton --config /home/usuario/.config/compton.conf &
-#para no afecte al java para uso del burssip
+
+#evitar errores con java para uso del burssip
 wmname LG3D &
 #fondo de pantalla
 feh --bg-fill /home/usuario/imagenes/nombreFondo.extencion &
@@ -88,6 +87,7 @@ feh --bg-fill /home/usuario/imagenes/nombreFondo.extencion &
 ~/.config/polybar/launch.sh &
 ```
 Agregamos al final del archivo
+
 ```bash
 #tecla prefix definida tecla windows
 bspc config pointer_modifier mod1
@@ -98,9 +98,10 @@ bspc config focus_follows_pointer true
 #Arregla el puntero de la barra de polybar
 xsetroot -cursor_name left_ptr &
 ```
+
+## Configuración sxhkd [Modificaciones]
 ---
-### Configuración sxhkd [Modificaciones]
-[nano /home/usuario/.config/sxhkd/sxhkdrc]
+> nano /home/usuario/.config/sxhkd/sxhkdrc
 
 ```bash
 #program launcher
