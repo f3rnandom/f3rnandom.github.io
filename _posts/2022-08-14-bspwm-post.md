@@ -5,10 +5,10 @@ author: Fernando Mendoza
 ---
 
 # Configuracion de BSPWM en Debian GNU/Linux
-
+---
 Bspwm es un poderoso administrador de ventanas minimalista para Linux. Es altamente configurable y propone un enfoque innovador para la gestión de ventanas. Bspwm está escrito en C y se puede configurar en cualquier idioma. 
 
-El presente archivo explica los pasos que podemos realizar para poder tener una configuracón de bspwm de manera correcta y exitosa.
+El presente archivo explica los pasos que podemos realizar para poder tener una configuracón de bspwm de manera correcta y exitosa, con el proposito de lograr mejorar nuestra productividad.
 
 ### Ventajas
 
@@ -19,7 +19,7 @@ El presente archivo explica los pasos que podemos realizar para poder tener una 
 
 ### Aplicaciones Necesarias
 ---
-Podemos realizar la instalacion pormedio del gestor de paquetes en caso de base `Debian` con apt con el cual necesitaremos permisos de super usuario `root` o realizando la compilación donde deberesmos seguir la documentación oficial de cada herramienta...
+Podemos realizar la instalación de las herramientas necesarias con el gestor de paquetes, en caso de las distribuciones derivadas de base `Debian` usaremos apt con los permisos de super usuario `root`, por otro lado podemos llevar acabo las intalaciones de las mismas realizando la compilación para ello deberemos seguir la documentación oficial de cada herramienta...
 
 - apt install bspwm	//gestor de ventanas
 - apt install sxhkd	//gestor de shortcuts aunque puede venir con bspwm integrado
@@ -27,12 +27,13 @@ Podemos realizar la instalacion pormedio del gestor de paquetes en caso de base 
 - apt install feh		//transparencias
 - apt install picom		//transparencias ---> compilacion mas abajo
 - apt install rofi		//Ejecutar aplicaciones
+- apt install tilix		//Emulador de terminal
 - apt install slim slimlock	//bloquear pantalla
 - apt install compton	//transparencias descontinuado
 
 ## Instalación de BSPWM 
 ---
-Para realizar la instalación compilandolo podemos seguir la guía en la wiki de [bspwm](https://github.com/baskerville/bspwm/wiki), esta guia esta centrada en Debian y derivadas.
+Si deseamos realizar la compilación de `bspwm` seguiremos la guía en la wiki ofical [bspwm](https://github.com/baskerville/bspwm/wiki).
 
 `Dependencias`
 
@@ -57,9 +58,9 @@ $ cd ../sxhkd && sudo make uninstall
 
 #### Correr BSPWM
 ---
-Crear las carpetas en `bspcm` y `sxhkd` en .config, y copiar los archivos de ejemplo para establecer una configuración por defecto.
+Crear las carpetas `bspwm` y `sxhkd` en el directorio `/home/nombre_usuario/.config`, y copiar los archivos de ejemplo para establecer una configuración del gestor de ventanas por defecto.
 
-Copiar los archivos de ejemplo en el directorio `~/.config/bspwm/bspwmrc` y en `~/.config/sxhkd/sxhkdrc` correspondientemente.
+Copiar los archivos de ejemplo en el directorio `~/.config/bspwm/` y en `~/.config/sxhkd/` correspondientemente.
 
 ```bash
 $ mkdir -p ~/.config/{bspwm,sxhkd}
@@ -67,7 +68,7 @@ $ cp /usr/local/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/
 $ cp /usr/local/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
 $ chmod u+x ~/.config/bspwm/bspwmrc
 ```
-Para iniciar bspwm en el inicio de sesión añada `exec bspwm` al final de su ~/.xinitrc o ~/.xprofile y bspwmrc lanza sxhkd por ti.
+Para iniciar el bspwm crearemos o modificaremos el archivo `~/.xinitrc` o `~/.xprofile` con la expresion de `exec bspwm` al final del archivo, bspwmrc lanza sxhkd por ti.
  > nano /home/user_name/.xinitrc
 
 
@@ -75,7 +76,7 @@ Para iniciar bspwm en el inicio de sesión añada `exec bspwm` al final de su ~/
 ---
 > nano /home/user_name/.config/bspwm/bspwmrc
 
-Agregamos al inicio del archivo
+Agregamos al inicio del archivo la siguiente configuración:
 
 ```bash
 sxhkd &
@@ -87,7 +88,7 @@ feh --bg-fill /home/usuario/imagenes/nombreFondo.extencion &
 #lanzar polybar
 ~/.config/polybar/launch.sh &
 ```
-Agregamos al final del archivo
+Agregamos al final del archivo la siguiente configuración:
 
 ```bash
 #tecla prefix definida tecla windows
@@ -100,9 +101,11 @@ bspc config focus_follows_pointer true
 xsetroot -cursor_name left_ptr &
 ```
 
-## Configuración sxhkd [Modificaciones]
+## Configuración sxhkd - Modificaciones
 ---
 > nano /home/usuario/.config/sxhkd/sxhkdrc
+
+Este archivo se encarga de gestionar los shortcuts (combinación de teclas) para abrir las aplicaciones y manejar la tailing window.
 
 ```bash
 #program launcher
@@ -156,6 +159,7 @@ Para configurar el shortcut de #Custom move/resize debemos crear un directorio
 > [Crear directorio ~/.confi/bspwm/scripts]
 Creamos el script para poder ejecutar las acciones que modifican el tamaño
 > [touch bspwm_resize con permisos de ejecucion]
+
 Codigo de archivo `bspwm_resize`
 ```bash
 #!/usr/bin/env dash
@@ -177,10 +181,8 @@ bspc node -z “$dir” “$x” “$y” || bspc node -z “$falldir” “$x�
 ```
 
 ### Instalar Polybar
-
-Intalación [Compilación]
-
-Para la Compilación https://github.com/polybar/polybar/wiki/Compiling
+---
+Compilación de [polybar] (https://github.com/polybar/polybar/wiki/Compiling) siguiendo la wiki oficial de la misma. 
 Instalar dependencias:
 
 > apt install build-essential git cmake cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev
@@ -209,7 +211,7 @@ Comenzamos el proceso de compilación
 > sudo make install
 
 ### Configurar Polybar
-
+---
 Clonar el repositorio en 'Descargas':
 > git clone https://github.com/VaughnValle/blue-sky.git
 Configurar con los siguientes comandos:
@@ -221,23 +223,31 @@ Configurar con los siguientes comandos:
 > fc-cache -v
 
 ### Picom 
-Para realizar la compilación e instalación de picom realizamos los siguientes comandos:
+---
+Esta herramienta nos permite poner las transparencias para nuesto tailing window, para realizar la compilación e instalación de picom realizamos los siguientes comandos:
 
-> apt update
+Para evitar pasos en este paso deberemos actualizar el sistema con el comando `apt update` y continuamos con la compilación:
+
 Intalar dependencias
+
 > sudo apt install meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev
-Clonamos repositorio
+
+Clonamo el repositorio
+```bash
 > git clone https://github.com/ibhagwan/picom.git
 > cd picom/
+```
 Procedemos a la compilación
+```bash
 > git submodule update --init --recursive
 > meson --buildtype=release . build
 > ninja -C build
 > sudo ninja -C build install
-
+```
 
 ### Configurar el Picom
-Creamos directorio `picom` en `.config` 
+---
+Antes crearenos el directorio `picom` en `~/.config` 
 > mkdir ~/.config/picom
 Accedemos al directorio
 > cd ~/.config/picom
@@ -255,18 +265,22 @@ echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc
 #[border_width 0	//define grosor del bordeado]
 ```
 Aplicar los bordeados:
-> echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc 
-> echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc
-> #[border_width 0	//define grosor del bordeado]
-
+```bash
+echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc 
+echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc
+#[border_width 0	//define grosor del bordeado]
+```
 
 ### Instalación de Slim SlimLock
-Este es una utilidad que nos ayuda a bloquear la seción.
+---
+Este es una utilidad que nos ayudara al bloquear el sistema.
 
 Para la instalación, primero instalamos las dependencias necesarias:
-> sudo apt install slim libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev
-> sudo apt update
->   ---> Elegir gestor de sesión slim
+```bash
+sudo apt install slim libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev
+sudo apt update
+```
+Este preceso nos arrojara una ventana donde eligiremos el gestor de sesión slim.
 
 Intalamos slimlock
 ```bash
@@ -281,14 +295,20 @@ sudo cp slimlock.conf /etc
 sudo cp -r default /usr/share/slim/themes
 ```
 ### Configuracion slimlock
-```bash
-cd /usr/share/slim/themes/default
-#Eliminar el imagen panel.png
-#Copiar una imagen deseada con el nomnre panel.png
-#establecer permisos 664 a la imagen
-chmod 664
-```
+---
+Este punto puede ser opciponal, el objetivo de este es establecer un fondo diferente al que viene po defecto.
+
+Accedemos a la ruta siguiente
+> cd /usr/share/slim/themes/default
+
+- Eliminar el imagen panel.png
+- Copiar una imagen deseada con el nomnre panel.png a este mismo directorio
+- Establecer los permisos 664 a la imagen.
+
+> chmod 664 panel.png
+
 # Configuración de rofi
+---
 Crear directorio
 > mkdir -p ~/.config/rofi/themes
 Copiar archivo de configuración de repo antes descargado
@@ -299,6 +319,7 @@ Seleccionamos el tema
 > Nord
 
 ### Incorporar Fuente 
+---
 Descargarla la fuente del sitio [Nerdfonts](https://www.nerdfonts.com/:
 elegir la hard nerd fonts
 `https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip`
@@ -310,17 +331,23 @@ Eliminar el archivo comprimido
 > rm Hack.zip
 
 ### Instalar Power Level 10k
+---
+La instalación manual de esta herramienta con la cual podemos personalizar la terminal la realizaremos por medio del repositorio oficil de [powerlevel10k](https://github.com/romkatv/powerlevel10k#manual):
 
-Instalacion manual en el repositorio oficila de [powerlevel10k](https://github.com/romkatv/powerlevel10k#manual)
-> -->	{Debemos realizarlo como usuario normal y como root}
-Clonamos el repositorio en el directorio `Descargas`
-> git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-> echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+> Debemos realizarlo como usuario normal y como usuario root
+Clonamos el repositorio en el directorio `Descargas`.
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+```
 Dar inicio a la Configuracion con el comando
+
 > zsh
+
 - Elegir las preferencias deseadas
 
 #### Retocar Power Level 10k
+---
 Abrir el archivo de configuracion de `powerlevel10k`
 > nano .p10k.zsh
 Comentar la linea
@@ -337,17 +364,18 @@ Asignar zsh a root y al usuario
 > usermod --shell /usr/bin/zsh root
 
 ### Firefox
-Descargar [firefox] página oficial (https://www.mozilla.org/es-MX/firefox/new/)
-Copiarlo al directorio `opt`
+Descargar [firefox] de la página oficial (https://www.mozilla.org/es-MX/firefox/new/):
+Copiarlo al directorio `opt`.
 > cp firefox.xxxx.tar /opt
 Descomprimir 
 > tar -xf firefox.xxx.tar
-Eliminar comprimido 
+Eliminar el archivo comprimido 
 > rm firefox.xxx.tar
-Intalar la herramienta firejail, el cual nos ayudad aprotegernos de ataques inseguros. 
+Instalar la herramienta firejail, el cual nos ayuda a protegernos de ataques inseguros. 
 > apt install firejail -y
 
 ### Shortcuts
+---
 ***********************************************
 windows + s 			          //ventanas Flotante
 windows  + f			          //Pantalla completa
