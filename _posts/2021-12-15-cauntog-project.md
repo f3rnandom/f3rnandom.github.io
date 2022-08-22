@@ -5,7 +5,7 @@ title: "Quanto Gasto"
 
 # QuantoGasto
 
-#### Desarrollo de una aplicación para el sistema operativo Android con el objetivo de tener un registro de los gastos realizados, elaborado como activiadad  para desarrollo de los conocimientos obtenidos durante la curricula de carrera de sistemas computacionales en la universidad Univer Milenium.
+##### Desarrollo de una aplicación para el sistema operativo Android con el objetivo de tener un registro de los gastos realizados, elaborado como activiadad  para desarrollo de los conocimientos obtenidos durante la curricula de carrera de sistemas computacionales en la universidad Univer Milenium. [Repositorio](https://github.com/F3rnandom/QuantoGasto)
 
 > Esta aplicació se realiza debido a la complejidad de las aplicaciones existentes, con el objetivo de cubrir el sector de las personas que no tienen mucho cocimiento de manejo de sitemas inteligentes.
 
