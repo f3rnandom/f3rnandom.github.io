@@ -297,3 +297,10 @@ Descomprimirlo
 
 Eliminar el archivo comprimido
 > rm Hack.zip
+
+
+## ScreenShot
+
+![Pantalla 1](f3rnandom.github.io/_screenshots/bspwm-b1.png)
+
+![Pantalla 2](f3rnandom.github.io/_screenshots/bspwm-b2.png)
