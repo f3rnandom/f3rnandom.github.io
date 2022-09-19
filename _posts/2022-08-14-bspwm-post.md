@@ -301,6 +301,6 @@ Eliminar el archivo comprimido
 
 ## ScreenShot
 
-![Pantalla 1](f3rnandom.github.io/_screenshots/bspwm-b1.png)
+![Pantalla 1](https://github.com/f3rnandom/f3rnandom.github.io/blob/main/_screenshots/bspwm-b1.png)
 
-![Pantalla 2](f3rnandom.github.io/_screenshots/bspwm-b2.png)
+![Pantalla 2](https://github.com/f3rnandom/f3rnandom.github.io/blob/main/_screenshots/bspwm-b2.png)
