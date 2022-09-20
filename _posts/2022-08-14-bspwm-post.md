@@ -300,7 +300,8 @@ Eliminar el archivo comprimido
 
 
 ## ScreenShot
-
-![Pantalla 1](https://github.com/f3rnandom/f3rnandom.github.io/blob/main/_screenshots/bspwm-b1.png)
-
-![Pantalla 2](https://github.com/f3rnandom/f3rnandom.github.io/blob/main/_screenshots/bspwm-b2.png)
+---
+![Pantalla 1](https://github.com/f3rnandom/f3rnandom.github.io/blob/1c85b683234a5a56f60ec7de57ba7d7715f0f83b/_screenshots/bspwm-b1.png)
+---
+![Pantalla 2](https://github.com/f3rnandom/f3rnandom.github.io/blob/1c85b683234a5a56f60ec7de57ba7d7715f0f83b/_screenshots/bspwm-b2.png)
+---
